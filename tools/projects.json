@@ -1,0 +1,37 @@
+{
+  "_comment": "Projects shown on the homepage (#projects, recent few) and the /project/ page (all, paginated). Numbering is automatic (newest/top = highest number). EXAMPLES below — replace with real projects. Fields: title, period, role, funder, description, url(optional).",
+  "projects": [
+    {
+      "title": "Privacy-Preserving Authentication for V2G and Intelligent Transportation Systems",
+      "period": "2024 – present",
+      "role": "Principal Investigator",
+      "funder": "National Research Foundation of Korea (NRF)",
+      "description": "Designing lightweight, accountable, and privacy-preserving authentication and key-agreement protocols for vehicle-to-grid (V2G) and intelligent transportation systems.",
+      "url": ""
+    },
+    {
+      "title": "Decentralized Identifiers (DID) and Data Access Control for the Industrial IoT",
+      "period": "2023 – present",
+      "role": "Principal Investigator",
+      "funder": "ETRI / NRF",
+      "description": "Blockchain- and DID-based decentralized authentication and fine-grained data access control for fog-enabled industrial and medical IoT environments.",
+      "url": ""
+    },
+    {
+      "title": "Post-Quantum and Searchable Encryption for Secure Data Sharing",
+      "period": "2022 – 2024",
+      "role": "Co-Investigator",
+      "funder": "NRF",
+      "description": "Key-aggregate searchable encryption and quantum-resistant key distribution for secure data sharing in cloud and fog environments.",
+      "url": ""
+    },
+    {
+      "title": "Trust Data Connectome — Autonomous Data Transaction Platform",
+      "period": "2021 – 2023",
+      "role": "Researcher (ETRI)",
+      "funder": "ETRI",
+      "description": "Monitoring and access-control mechanisms for autonomous, trustworthy personal-data transactions using decentralized identifiers and verifiable credentials.",
+      "url": ""
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+/* ============================================================================
+   ISNP Lab — DESIGN v3 (dark-header look) — BLUE palette + dark-mode aware.
+   Loaded AFTER academic.css. Light + dark (body.dark) variants.
+   Retune the palette in :root.
+   ============================================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+:root {
+  --v-primary: #004e96;        /* navy blue */
+  --v-primary-dark: #00345f;
+  --v-primary-light: #5b9bd5;  /* lighter blue (readable on dark) */
+  --v-tag: #004e96;
+  --v-ink: #1f2430;
+  --v-muted: #5b6472;
+  --v-border: #e2e8f0;
+  --v-bg: #f6f9fc;
+  --v-header: #0c2440;         /* deep navy header */
+  --d-surface: #18222e;        /* dark-mode card surface */
+  --d-border: rgba(255,255,255,0.12);
+  --d-text: #e6eaf0;
+  --d-muted: #aab3c0;
+}
+
+/* ---- typography ---- */
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important; color: var(--v-ink); background: var(--v-bg); }
+h1, h2, h3, h4, h5, .navbar-brand, .portrait-title h2, .article-title { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; letter-spacing: -.01em; }
+a { color: var(--v-primary); }
+a:hover { color: var(--v-primary-dark); }
+
+/* ---- dark header (same in both modes) ---- */
+#navbar-main { background: var(--v-header) !important; box-shadow: 0 2px 16px rgba(12,36,64,.30); border: 0; }
+#navbar-main .navbar-brand { color: #fff !important; font-weight: 800; }
+#navbar-main .nav-link, #navbar-main .nav-link .navItem, #navbar-main .nav-icons .nav-link i { color: #cfe0f2 !important; }
+#navbar-main .nav-link:hover .navItem, #navbar-main .nav-link.active .navItem { color: #fff !important; }
+#navbar-main .nav-link .navItem { position: relative; padding-bottom: 4px; }
+#navbar-main .nav-link:hover .navItem::after, #navbar-main .nav-link.active .navItem::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--v-primary-light); border-radius: 2px;
+}
+#navbar-main .navbar-toggler { color: #fff; border-color: rgba(255,255,255,.3); }
+
+/* ---- sections ---- */
+.home-section { padding: 4rem 0; }
+.home-section:nth-of-type(even) { background: #eef3fa; }
+#about.home-section { background: linear-gradient(160deg, #e9f1fb 0%, var(--v-bg) 60%); }
+.section-heading h1 { color: var(--v-primary-dark); font-weight: 800; position: relative; padding-bottom: .4rem; }
+.section-heading h1::after { content: ''; display: block; width: 52px; height: 4px; margin-top: .5rem; background: linear-gradient(90deg, var(--v-primary), var(--v-primary-light)); border-radius: 3px; }
+
+/* ---- profile / interests (colored bar only, no bullet) ---- */
+#profile .avatar { border: 4px solid #fff; box-shadow: 0 10px 30px rgba(0,78,150,.22); width: 240px !important; height: 240px !important; object-fit: contain !important; background: #fff; }
+.portrait-title h3 { color: var(--v-primary); }
+.ul-interests { list-style: none; padding-left: 0; margin-left: 0; }
+.ul-interests li { list-style: none; border-left: 3px solid var(--v-primary); padding-left: .6rem; margin-bottom: .35rem; }
+.ul-interests li::before { content: none !important; }
+
+/* ---- buttons ---- */
+.btn-outline-primary { color: var(--v-primary) !important; border-color: var(--v-primary) !important; border-radius: 999px; font-weight: 600; }
+.btn-outline-primary:hover { background: var(--v-primary) !important; color: #fff !important; }
+
+/* ---- homepage publication list: keep theme layout, recolor accents (SAFE) ---- */
+.pub-year { color: rgba(0,78,150,0.08) !important; }
+.pub-tag-label { background: rgba(0,78,150,0.12) !important; color: var(--v-primary-dark) !important; }
+.articleTittle a { color: var(--v-ink); }
+.articleTittle a:hover { color: var(--v-primary); }
+
+/* ISNP Lab member emphasis */
+.isnp-member { font-weight: 800; color: var(--v-primary); }
+
+/* ---- /publication/ category nav + sections ---- */
+.pub-cat-nav { display: flex; flex-wrap: wrap; gap: .5rem; margin: .25rem 0 1.5rem; }
+.pub-cat-nav a { display: inline-block; padding: .35rem .8rem; border: 1px solid var(--v-border); border-radius: 999px; color: var(--v-primary); background: #fff; text-decoration: none; font-size: .85rem; font-weight: 600; }
+.pub-cat-nav a:hover { background: var(--v-primary); color: #fff; border-color: var(--v-primary); }
+.pub-cat-title { margin-top: 2rem; padding-bottom: .3rem; border-bottom: 2px solid var(--v-primary); color: var(--v-primary-dark); scroll-margin-top: 80px; }
+.pub-cat-title small { color: #9aa0b3; font-weight: 400; }
+
+/* ---- numbered listing rows (card style) ---- */
+.pub-listing-item { display: flex; align-items: flex-start; gap: .9rem; padding: .85rem 1rem; margin-bottom: .6rem; background: #fff; border: 1px solid var(--v-border); border-radius: 12px; transition: box-shadow .15s, transform .15s; }
+.pub-listing-item:hover { box-shadow: 0 8px 22px rgba(0,78,150,.10); transform: translateY(-1px); }
+.pub-leftcol { flex: 0 0 3.4rem; display: flex; flex-direction: column; align-items: center; gap: .3rem; text-align: center; }
+.pub-leftcol .pub-num { font-size: 1.15rem; font-weight: 800; color: var(--v-primary); line-height: 1; font-variant-numeric: tabular-nums; }
+.pub-leftcol .pub-star { font-size: 1.1rem; color: #f5a623; line-height: 1; }
+.pub-leftcol .pub-vtag { display: inline-block; background: var(--v-tag); color: #fff; font-size: .68rem; font-weight: 600; padding: .05rem .4rem; border-radius: 5px; max-width: 3.4rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pub-body { flex: 1 1 auto; }
+.pub-body .pub-title { font-weight: 700; line-height: 1.35; font-family: 'Plus Jakarta Sans', sans-serif; }
+.pub-body .pub-title a { color: #1f2430; }
+.pub-body .pub-title a:hover { color: var(--v-primary); }
+.pub-body .pub-authors { margin-top: .15rem; }
+.pub-body .pub-venue { color: var(--v-muted); font-size: .92rem; margin-top: .1rem; }
+
+/* ---- pagination pager ---- */
+.pagination-nav { margin: 1.8rem 0 .5rem; }
+.pagination-nav .pagination { display: flex; flex-wrap: wrap; gap: .35rem; justify-content: center; list-style: none; padding: 0; }
+.pagination-nav .page-link { display: inline-block; min-width: 2.2rem; text-align: center; padding: .4rem .6rem; border: 1px solid var(--v-border); border-radius: 8px; color: var(--v-primary); background: #fff; text-decoration: none; }
+.pagination-nav .page-item.active .page-link { background: var(--v-primary); color: #fff; border-color: var(--v-primary); font-weight: 700; }
+.pagination-nav .page-item.disabled .page-link { color: #a7adbf; background: #f1f4f8; }
+.pagination-nav .page-info { text-align: center; color: var(--v-muted); font-size: .85rem; margin-top: .45rem; }
+
+/* ---- projects ---- */
+.wide-page { padding-bottom: 2.5rem; }
+.wide-page > h1 { margin-bottom: .15rem; }
+.wide-page .project-grid { margin-top: 1rem; }
+.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; align-items: start; }
+.project-card { width: 100%; min-width: 0; box-sizing: border-box; background: #fff; border: 1px solid var(--v-border); border-radius: 14px; padding: 1.1rem 1.2rem; box-shadow: 0 2px 10px rgba(12,36,64,.05); }
+.project-card:hover { box-shadow: 0 10px 26px rgba(0,78,150,.12); }
+.project-card .proj-num { color: #fff; background: var(--v-primary); border-radius: 7px; padding: .05rem .5rem; font-weight: 700; font-size: .8rem; }
+.project-card .proj-meta { color: var(--v-primary-dark); font-size: .82rem; font-weight: 600; }
+.project-card h4 { margin: .55rem 0 .2rem; font-size: 1.05rem; }
+.project-card h4 a { color: #1f2430; }
+.project-card .proj-desc { color: #46505c; font-size: .9rem; margin-top: .4rem; }
+
+/* ---- footer ---- */
+.site-footer { border-top: 3px solid var(--v-primary); }
+
+/* ============================================================================
+   DARK MODE (body.dark) — adapt the overlay so cards/sections aren't light
+   blocks on a dark page; brighten accents for contrast.
+   ============================================================================ */
+body.dark .home-section:nth-of-type(even) { background: rgba(255,255,255,0.03); }
+body.dark #about.home-section { background: linear-gradient(160deg, rgba(0,78,150,0.18) 0%, transparent 60%); }
+/* dark-mode header: one coordinated dark navy for the bar + its menu/collapse + toggler
+   (the bright navy clashed with the dark page, and the menu area was a different dark). */
+body.dark #navbar-main,
+body.dark #navbar-main .navbar-collapse,
+body.dark #navbar-main .navbar-toggler { background: #182334 !important; }
+body.dark #navbar-main { box-shadow: 0 2px 14px rgba(0,0,0,.45) !important; }
+body.dark .section-heading h1, body.dark .portrait-title h3, body.dark a { color: var(--v-primary-light); }
+body.dark .pub-cat-title { color: var(--v-primary-light); border-bottom-color: var(--v-primary-light); }
+body.dark .isnp-member { color: var(--v-primary-light); }
+body.dark .ul-interests li { border-left-color: var(--v-primary-light); }
+body.dark .pub-year { color: rgba(255,255,255,0.06) !important; }
+body.dark .pub-tag-label { background: rgba(91,155,213,0.22) !important; color: #cfe0f2 !important; }
+
+/* surfaces (cards, pills, pager) */
+body.dark .pub-listing-item,
+body.dark .project-card { background: var(--d-surface); border-color: var(--d-border); }
+body.dark .pub-cat-nav a,
+body.dark .pagination-nav .page-link { background: var(--d-surface); border-color: var(--d-border); color: var(--v-primary-light); }
+body.dark .pub-cat-nav a:hover,
+body.dark .pagination-nav .page-item.active .page-link { background: var(--v-primary); color: #fff; border-color: var(--v-primary); }
+body.dark .pagination-nav .page-item.disabled .page-link { background: #11181f; color: #6b7280; }
+
+/* text inside cards (literal hex + high specificity: many base `a` rules compete in dark mode) */
+body.dark .pub-listing-item .pub-body .pub-title a,
+body.dark .pub-listing-item .pub-body .pub-title a:visited,
+body.dark .project-card h4 a,
+body.dark .project-card h4 a:visited,
+body.dark .articleTittle a { color: #e6eaf0 !important; }
+body.dark .pub-body .pub-title a:hover,
+body.dark .project-card h4 a:hover { color: var(--v-primary-light) !important; }
+body.dark .pub-body .pub-venue,
+body.dark .project-card .proj-desc { color: var(--d-muted) !important; }
+body.dark .project-card .proj-meta { color: var(--v-primary-light) !important; }
+body.dark .btn-outline-primary { color: var(--v-primary-light) !important; border-color: var(--v-primary-light) !important; }
+body.dark .btn-outline-primary:hover { background: var(--v-primary-light) !important; color: #0c2440 !important; }
+body.dark #profile .avatar { border-color: #2a3744; }
